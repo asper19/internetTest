@@ -11,7 +11,7 @@ while (True):
     file = open(os.path.join("logs", fileTitle), 'a')
 
     with open(os.path.join("logs", fileTitle), 'a') as file :
-        while(fileTitle == time.strftime('%Y%m%d', myTime0) ) :
+        while(fileTitle == time.strftime('%Y%m%d', time.localtime()) ) :
             
             try :
                 myTime1 = time.localtime()
@@ -22,5 +22,3 @@ while (True):
                 file.write(f'{iso1}, {iso2}, {ResponseList.success(2)}, {ResponseList.rtt_avg_ms}, {ResponseList.stats_success_ratio} \n')
             except socket.error:
                 file.write(f'{iso1}, {iso2}, False, SocketError, SocketError\n')
-
-            myTime0 = time.localtime()
